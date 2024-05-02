@@ -1,5 +1,6 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.repository;
 
+import com.example.CSTestAssignment.repository.User;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

@@ -1,8 +1,10 @@
-package com.example.CSTestAssignment.user.response;
+package com.example.CSTestAssignment.services;
 
-import com.example.CSTestAssignment.user.User;
-import com.example.CSTestAssignment.user.UserDTO;
-import com.example.CSTestAssignment.user.UserRepository;
+import com.example.CSTestAssignment.services.ResponseService;
+import com.example.CSTestAssignment.client.ResponseUserDTO;
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.repository.UserDTO;
+import com.example.CSTestAssignment.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,14 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.services;
 
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.repository.UserRepository;
+import com.example.CSTestAssignment.repository.UserDTO;
+import com.example.CSTestAssignment.services.utils.UserMapper;
+import com.example.CSTestAssignment.services.utils.ValidationUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.*;
@@ -14,23 +18,19 @@ import java.util.*;
 public class UserService {
     private final UserRepository repository;
     private final UserMapper userMapper;
-    @Autowired
-    private  ValidationUser validator;
+    private final ValidationUser validator;
 
     public User getUserById(Long id){
         return repository.findById(id).orElse(null);
     }
-
     public List<User> getAllUsers(){
         return repository.findAll();
     }
-
     public User createUser ( UserDTO userDTO)  {
         User userToDataBase = userMapper.toUser(userDTO);
         repository.save(userToDataBase);
         return userToDataBase;
     }
-
     public User updateSomeFields(Long userId, String jsonDataFromRequest) {
         User user = repository.findById(userId).orElse(null);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -40,7 +40,6 @@ public class UserService {
         } catch (JsonProcessingException e) {
             throw new IllegalArgumentException("Invalid json format");
         }
-
         UserDTO userDTO = new UserDTO();
         for (Map.Entry<String,String> item: fields.entrySet()) {
             if(item.getKey().equals("email")) userDTO.setEmail( item.getValue());
@@ -62,13 +61,10 @@ public class UserService {
     }
     public  void deleteUserById(Long id){
         repository.deleteById(id);
-
     }
     public List<User> searchByBirthdayFromTo(String  fromDateString, String toDateString){
         LocalDate  fromDate = validator.localDateValidator(fromDateString);
         LocalDate  toDate = validator.localDateValidator(toDateString);
         return repository.findUsersByBirthday(fromDate,toDate);
     }
-
-
 }

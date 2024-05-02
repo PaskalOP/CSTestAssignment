@@ -1,9 +1,10 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.services;
 
+import com.example.CSTestAssignment.repository.UserDTO;
+import com.example.CSTestAssignment.services.utils.ValidationUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;

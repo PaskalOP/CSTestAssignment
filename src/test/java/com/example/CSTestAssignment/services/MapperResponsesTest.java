@@ -1,6 +1,8 @@
-package com.example.CSTestAssignment.user.response;
+package com.example.CSTestAssignment.services;
 
-import com.example.CSTestAssignment.user.User;
+import com.example.CSTestAssignment.services.utils.MapperResponses;
+import com.example.CSTestAssignment.client.ResponseUserDTO;
+import com.example.CSTestAssignment.repository.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

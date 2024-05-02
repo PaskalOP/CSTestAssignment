@@ -1,8 +1,7 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.repository;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Generated;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -36,8 +35,6 @@ public class User {
     public User(){
         this.id = UUID.randomUUID().getLeastSignificantBits()*-1;
     }
-
-
     public User(String email, String firstName, String lastName, LocalDate birthday, String address, String phone) {
         this.id = UUID.randomUUID().getLeastSignificantBits()*-1;
         this.email = email;

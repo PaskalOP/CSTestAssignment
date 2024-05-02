@@ -1,6 +1,8 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.client;
 
-import com.example.CSTestAssignment.user.response.ResponseService;
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.repository.UserRepository;
+import com.example.CSTestAssignment.services.ResponseService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;

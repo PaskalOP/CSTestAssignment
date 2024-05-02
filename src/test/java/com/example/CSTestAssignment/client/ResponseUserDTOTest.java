@@ -1,5 +1,6 @@
-package com.example.CSTestAssignment.user.response;
+package com.example.CSTestAssignment.client;
 
+import com.example.CSTestAssignment.client.ResponseUserDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

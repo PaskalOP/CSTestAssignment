@@ -1,16 +1,17 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.repository.UserDTO;
+import com.example.CSTestAssignment.repository.UserRepository;
+import com.example.CSTestAssignment.services.utils.UserMapper;
+import com.example.CSTestAssignment.services.UserService;
+import com.example.CSTestAssignment.services.utils.ValidationUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.AssertTrue;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,7 +26,7 @@ class UserServiceTest {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private  ValidationUser validator;
+    private ValidationUser validator;
     @Autowired
     private UserService userService;
     @BeforeEach

@@ -1,8 +1,10 @@
-package com.example.CSTestAssignment.user.response;
+package com.example.CSTestAssignment.services;
 
-import com.example.CSTestAssignment.user.User;
-import com.example.CSTestAssignment.user.UserDTO;
-import com.example.CSTestAssignment.user.UserService;
+import com.example.CSTestAssignment.client.ResponseUserDTO;
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.services.utils.MapperResponses;
+import com.example.CSTestAssignment.repository.UserDTO;
+import com.example.CSTestAssignment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,12 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.services.utils;
 
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.repository.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-@Service
+@Component
 public class UserMapper {
     @Autowired
     private ValidationUser validator;
@@ -13,7 +15,6 @@ public class UserMapper {
         if(userDTO == null) {
             throw new NullPointerException("userDTO is null");
         }
-
         if (validator.userValidation(userDTO)){
             user.setEmail(userDTO.getEmail());
             user.setFirstName(userDTO.getFirstName());
@@ -23,8 +24,8 @@ public class UserMapper {
             user.setPhone(userDTO.getPhone());
         }
         return user;
-
     }
+
     public User toUserFromAllFields(UserDTO userDTO,User user){
         if(userDTO==null || user==null){
             throw new NullPointerException("Some of params is null");
@@ -72,7 +73,5 @@ public class UserMapper {
             user.setPhone(phone);
         }
         return user;
-
     }
-
 }

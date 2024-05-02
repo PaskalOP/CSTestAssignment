@@ -1,8 +1,11 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.services;
 
+import com.example.CSTestAssignment.repository.User;
+import com.example.CSTestAssignment.repository.UserDTO;
+import com.example.CSTestAssignment.services.utils.UserMapper;
+import com.example.CSTestAssignment.services.utils.ValidationUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
@@ -14,7 +17,7 @@ class UserMapperTest {
     @Autowired
     private ValidationUser validator;
     @Autowired
-    private  UserMapper userMapper;
+    private UserMapper userMapper;
 
 
 

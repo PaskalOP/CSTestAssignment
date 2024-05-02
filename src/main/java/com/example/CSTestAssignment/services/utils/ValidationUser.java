@@ -1,7 +1,9 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.services.utils;
 
 
+import com.example.CSTestAssignment.repository.UserDTO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -11,9 +13,8 @@ import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Service
+@Component
 public class ValidationUser {
-
     @Value("${user.age.limit}")
     private int ageLimit;
     public boolean validationEmail(String email){
@@ -23,7 +24,6 @@ public class ValidationUser {
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-
         if (!matcher.matches()){
             throw new IllegalArgumentException("Invalid email");
         }
@@ -39,7 +39,6 @@ public class ValidationUser {
             if (dateFormat.isAfter(LocalDate.now())) {
                 throw new IllegalArgumentException("You input incorrect birthday");
             }
-
             int ageUser = Period.between(dateFormat,LocalDate.now()).getYears();
             if(ageUser<ageLimit){
                 throw new IllegalArgumentException("you are younger than "+ageLimit);
@@ -47,10 +46,8 @@ public class ValidationUser {
             return true;
         } catch (DateTimeParseException e){
             throw new IllegalArgumentException("Invalid date format");
-
         }
     }
-
     public boolean notEmptyName(String firstName){
         if(firstName ==null) {
             throw new NullPointerException("Field 'firstName' is required");
@@ -69,7 +66,6 @@ public class ValidationUser {
         }
         return true;
     }
-
     public boolean userValidation (UserDTO userDTO) throws IllegalArgumentException{
         String email = userDTO.getEmail();
         String firstName = userDTO.getFirstName();
@@ -91,7 +87,6 @@ public class ValidationUser {
             parse= LocalDate.parse(date, formatter);
         }catch (DateTimeParseException e){
             throw new IllegalArgumentException("Invalid date format");
-
         }
         return parse;
     }

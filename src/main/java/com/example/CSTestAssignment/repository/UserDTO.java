@@ -1,4 +1,4 @@
-package com.example.CSTestAssignment.user;
+package com.example.CSTestAssignment.repository;
 
 import lombok.Data;
 @Data
@@ -12,7 +12,6 @@ public class UserDTO {
     private String phone;
 
     public UserDTO(){}
-
     public UserDTO(String email, String firstName, String lastName, String birthday, String address, String phone) {
         this.email = email;
         this.firstName = firstName;

@@ -10,7 +10,9 @@ public class UserMapper {
     private ValidationUser validator;
     public User toUser(UserDTO userDTO){
         User user= new User();
-        if(userDTO == null) throw new NullPointerException("userDTO is null");
+        if(userDTO == null) {
+            throw new NullPointerException("userDTO is null");
+        }
 
         if (validator.userValidation(userDTO)){
             user.setEmail(userDTO.getEmail());
@@ -24,7 +26,9 @@ public class UserMapper {
 
     }
     public User toUserFromAllFields(UserDTO userDTO,User user){
-        if(userDTO==null || user==null) throw new NullPointerException("Some of params is null");
+        if(userDTO==null || user==null){
+            throw new NullPointerException("Some of params is null");
+        }
         if (validator.userValidation(userDTO)){
             user.setEmail(userDTO.getEmail());
             user.setFirstName(userDTO.getFirstName());
@@ -36,7 +40,9 @@ public class UserMapper {
         return user;
     }
     public User toUserFromSomeFields(UserDTO userDTO,User user){
-        if(userDTO==null||user==null) throw new NullPointerException("Some of params is null");
+        if(userDTO==null||user==null){
+            throw new NullPointerException("Some of params is null");
+        }
         String email = userDTO.getEmail();
         String firstName = userDTO.getFirstName();
         String lastName = userDTO.getLastName();

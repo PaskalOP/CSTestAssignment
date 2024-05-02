@@ -18,7 +18,9 @@ public class ResponseService {
     public ResponseEntity<ResponseUserDTO> getUserByIdResponse(long id){
         try{
             User user = userService.getUserById(id);
-            if(user == null) return  mapperResponses.buildErrorResponse("No one user with this ID");
+            if(user == null) {
+                return  mapperResponses.buildErrorResponse("No one user with this ID");
+            }
             return mapperResponses.buildSuccessResponseForUser("User data", user);
         } catch (IllegalArgumentException e) {
             return mapperResponses.buildErrorResponse( e.getMessage());
@@ -31,7 +33,9 @@ public class ResponseService {
     public ResponseEntity<ResponseUserDTO> getAllUsersResponse(){
         try {
             List<User> allUsers = userService.getAllUsers();
-            if(allUsers == null) return  mapperResponses.buildErrorResponse("All users is null");
+            if(allUsers == null) {
+                return  mapperResponses.buildErrorResponse("All users is null");
+            }
             return mapperResponses.buildSuccessResponse("Users data", allUsers );
         } catch (IllegalArgumentException e) {
             return mapperResponses.buildErrorResponse( e.getMessage());
@@ -51,7 +55,9 @@ public class ResponseService {
     }
     public ResponseEntity<ResponseUserDTO> updateUserByIdResponse(long id, UserDTO user){
         try {
-            if(userService.getUserById(id) == null) return  mapperResponses.buildErrorResponse("No one user with this ID");
+            if(userService.getUserById(id) == null){
+                return  mapperResponses.buildErrorResponse("No one user with this ID");
+            }
             User updatedUser = userService.updateUserById(id, user);
 
             return mapperResponses.buildSuccessResponseForUser("User updated successfully", updatedUser );
@@ -65,7 +71,9 @@ public class ResponseService {
     public ResponseEntity<ResponseUserDTO> updateUserFieldsResponse(long id, String jsonQuery) {
         try {
             User updatedUser = userService.updateSomeFields(id, jsonQuery);
-            if(updatedUser == null) return  mapperResponses.buildErrorResponse("No one user with this ID");
+            if(updatedUser == null) {
+                return  mapperResponses.buildErrorResponse("No one user with this ID");
+            }
             return mapperResponses.buildSuccessResponseForUser("All fields updated successfully", updatedUser);
         } catch (IllegalArgumentException e) {
             return mapperResponses.buildErrorResponse(e.getMessage());
@@ -75,7 +83,9 @@ public class ResponseService {
     }
     public ResponseEntity<ResponseUserDTO> deleteUserByIdResponse(long id){
         try {
-            if(userService.getUserById(id) == null) return  mapperResponses.buildErrorResponse("No one user with this ID");
+            if(userService.getUserById(id) == null) {
+                return  mapperResponses.buildErrorResponse("No one user with this ID");
+            }
             userService.deleteUserById(id);
             return mapperResponses.buildSuccessResponseForMessage("User delete successfully");
         } catch (IllegalArgumentException e) {

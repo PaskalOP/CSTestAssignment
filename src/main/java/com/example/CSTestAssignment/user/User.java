@@ -2,6 +2,7 @@ package com.example.CSTestAssignment.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Generated;
 
 import java.time.LocalDate;
 import java.util.UUID;

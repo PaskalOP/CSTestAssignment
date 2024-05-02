@@ -17,16 +17,22 @@ public class ValidationUser {
     @Value("${user.age.limit}")
     private int ageLimit;
     public boolean validationEmail(String email){
-        if(email ==null) throw new NullPointerException("Field 'email' is required");
+        if(email ==null){
+            throw new NullPointerException("Field 'email' is required");
+        }
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
-        if (!matcher.matches()) throw new IllegalArgumentException("Invalid email");
+        if (!matcher.matches()){
+            throw new IllegalArgumentException("Invalid email");
+        }
         return true;
     }
     public boolean validationBirthday(String birthday) {
-        if(birthday ==null) throw new NullPointerException("Field 'birthday' is required");
+        if(birthday ==null) {
+            throw new NullPointerException("Field 'birthday' is required");
+        }
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
             LocalDate dateFormat = LocalDate.parse(birthday, formatter);
@@ -46,13 +52,21 @@ public class ValidationUser {
     }
 
     public boolean notEmptyName(String firstName){
-        if(firstName ==null) throw new NullPointerException("Field 'firstName' is required");
-        if(firstName.isBlank()) throw new IllegalArgumentException("You don't input your first name");
+        if(firstName ==null) {
+            throw new NullPointerException("Field 'firstName' is required");
+        }
+        if(firstName.isBlank()){
+            throw new IllegalArgumentException("You don't input your first name");
+        }
         return true;
     }
     public boolean notEmptySoname (String lastName){
-        if(lastName ==null) throw new NullPointerException("Field 'lastName' is required");
-        if(lastName.length()<1) throw new IllegalArgumentException("You don't input your  last name");
+        if(lastName ==null) {
+            throw new NullPointerException("Field 'lastName' is required");
+        }
+        if(lastName.length()<1) {
+            throw new IllegalArgumentException("You don't input your  last name");
+        }
         return true;
     }
 
@@ -68,7 +82,9 @@ public class ValidationUser {
         return true;
     }
     public LocalDate localDateValidator (String date){
-        if(date==null) throw new NullPointerException("You don't input date");
+        if(date==null){
+            throw new NullPointerException("You don't input date");
+        }
         LocalDate parse;
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");

@@ -18,54 +18,31 @@ class MapperResponsesTest {
 
     @Test
     void buildSuccessResponse_returnResponseEntitySuccessWithList() {
-        String message = "message";
         User user1 = new User();
         User user2 = new User();
         List<User> usersFromData = new ArrayList<>();
         usersFromData.add(user1);
         usersFromData.add(user2);
-        ResponseEntity<ResponseUserDTO> response = mapperResponses.buildSuccessResponse(message,usersFromData);
-        ResponseUserDTO responseBody = response.getBody();
 
-        assertNotNull(responseBody);
-        assertEquals(200, response.getStatusCode().value());
-        assertTrue(response.getHeaders().isEmpty());
-        assertTrue(responseBody.isSuccess());
-        assertEquals(message, responseBody.getMessage());
-        assertEquals(usersFromData, responseBody.getData());
+        ResponseEntity<ResponseUserDTO> response = mapperResponses.buildSuccessResponse("message",usersFromData);
+        buildTestTrue("message",200,usersFromData, response);
     }
 
     @Test
     void buildSuccessResponse_returnResponseEntitySuccessWithUser() {
-        String message = "message";
         User user1 = new User();
         List<User> usersFromData = new ArrayList<>();
         usersFromData.add(user1);
-        ResponseEntity<ResponseUserDTO> response = mapperResponses.buildSuccessResponseForUser(message,user1);
-        ResponseUserDTO responseBody = response.getBody();
 
-        assertNotNull(responseBody);
-        assertEquals(200, response.getStatusCode().value());
-        assertTrue(response.getHeaders().isEmpty());
-        assertTrue(responseBody.isSuccess());
-        assertEquals(message, responseBody.getMessage());
-        assertEquals(usersFromData, responseBody.getData());
-
-
+        ResponseEntity<ResponseUserDTO> response = mapperResponses.buildSuccessResponseForUser("message",user1);
+        buildTestTrue("message",200,usersFromData,response);
     }
 
     @Test
     void testBuildSuccessResponse_returnResponseEntitySuccessWithMessage() {
         String message = "message";
         ResponseEntity<ResponseUserDTO> response = mapperResponses.buildSuccessResponseForMessage(message);
-        ResponseUserDTO responseBody = response.getBody();
-
-        assertNotNull(responseBody);
-        assertEquals(200, response.getStatusCode().value());
-        assertTrue(response.getHeaders().isEmpty());
-        assertTrue(responseBody.isSuccess());
-        assertEquals(message, responseBody.getMessage());
-        assertEquals( null, responseBody.getData());
+        buildTestTrue("message",200,null,response);
     }
 
     @Test
@@ -80,5 +57,15 @@ class MapperResponsesTest {
         assertEquals(message, responseBody.getMessage());
         assertEquals( null, responseBody.getData());
 
+    }
+    private void buildTestTrue(String message,int statusCode,List<User> users, ResponseEntity<ResponseUserDTO> response){
+        ResponseUserDTO responseBody = response.getBody();
+
+        assertNotNull(responseBody);
+        assertEquals(statusCode, response.getStatusCode().value());
+        assertTrue(response.getHeaders().isEmpty());
+        assertTrue(responseBody.isSuccess());
+        assertEquals(message, responseBody.getMessage());
+        assertEquals(users, responseBody.getData());
     }
 }

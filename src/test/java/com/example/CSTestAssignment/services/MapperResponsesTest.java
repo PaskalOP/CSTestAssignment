@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MapperResponsesTest {
     @Autowired
     private MapperResponses mapperResponses;
-
+//Success test
     @Test
     void buildSuccessResponse_returnResponseEntitySuccessWithList() {
         User user1 = new User();

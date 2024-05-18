@@ -32,6 +32,6 @@ jobs:
         run: ./gradlew build -x test
 
       - name: Run unit tests
-        run: ./gradlew test
+        run: gradlew test
 
 
